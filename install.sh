@@ -44,6 +44,7 @@ source ./lib/brew
 source ./lib/npm
 source ./lib/osx
 source ./lib/sublime
+source ./lib/fonts
 
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
@@ -83,42 +84,72 @@ if ! is_git_repo; then
     git clean -fd
 fi
 
-e_header "Syncing dotfiles..."
+e_header "Syncing dotfiles from Git..."
 # Pull down the latest changes
 git pull --rebase origin master
 # Update submodules
 git submodule update --recursive --init --quiet
 
-# Install Homebrew formulae
-e_header "Installing brew and brew cask packages..."
-run_brew
-e_success "done installing brew and brew cask packages..."
-# Install Node packages
-e_header "Installing Node.js packages..."
-run_npm
-e_success "Done installing Node.js packages..."
-# Copy sublime text packages and configs
-e_header "Updating Sublime Text preferences and packages..."
-run_sublime
-e_success "Done updating Sublime Text preferences and packages..."
+seek_confirmation "Installing brew and brew cask packages."
+if is_confirmed; then
+    # Install Homebrew formulae
+    run_brew
+    e_success "done installing brew and brew cask packages..."
+else
+    e_warning "Skipped installing brew and brew cask packages."
+fi
 
-e_header "Overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
-backupFiles
-e_success "Dotfiles backup complete!"
-mirrorfiles
-e_success "Dotfiles update complete!"
+seek_confirmation "Installing Node.js packages."
+if is_confirmed; then
+    # Install Node packages
+    run_npm
+    e_success "Done installing Node.js packages..."
+else
+    e_warning "Skipped installing Node.js packages.."
+fi
+
+seek_confirmation "Installing Roboto font."
+if is_confirmed; then
+    # Install fonts
+    run_fonts
+    e_success "Done installing Roboto font..."
+else
+    e_warning "Skipped installing Roboto font.."
+fi
+
+seek_confirmation "Updating Sublime Text preferences and packages."
+if is_confirmed; then
+    # Copy sublime text packages and configs
+    run_sublime
+    e_success "Done updating Sublime Text preferences and packages..."
+else
+    e_warning "Skipped updating Sublime Text preferences and packages."
+fi
+
+seek_confirmation "Overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
+if is_confirmed; then
+    backupFiles
+    e_success "Dotfiles backup complete!"
+    mirrorfiles
+    e_success "Dotfiles update complete!"
+else
+    e_warning "Skipped overwrite existing dotfiles."
+fi
+
 source ${HOME}/.bash_profile
 
-# Ask before potentially overwriting OS X defaults
 seek_confirmation "Warning: This step may modify your OS X system defaults."
-
 if is_confirmed; then
     run_osx
     e_success "OS X settings updated! You may need to restart."
 else
-    printf "Skipped OS X settings update.\n"
+    e_warning "Skipped OS X settings update."
 fi
 
-e_header "Installing Terminal material theme"
-open ./extra/material-theme.terminal
-e_success "Succesfully installed Terminal material theme"
+eek_confirmation "Installing Terminal material theme."
+if is_confirmed; then
+    open ./extra/material-theme.terminal
+    e_success "Succesfully installed Terminal material theme"
+else
+    e_warning "Skipped installing Terminal material theme."
+fi

@@ -1,0 +1,8 @@
+run_fonts() {
+	FONTS_DIR="${HOME}/Library/Fonts"
+	ROBOTO="./extra/fonts"
+
+	for fonts in "${ROBOTO}"/*; do
+		cp "${fonts}" "${FONTS_DIR}"
+	done
+}
