@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Ask for the administrator password upfront.
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until the script has finished.
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -37,8 +43,8 @@ brew install woff2
 brew install trash
 
 brew install maven
-#brew cask install java7
-#brew cask install java
+brew cask install java7
+brew cask install java
 #brew install jenv
 brew install bash-completion
 brew install node
@@ -53,18 +59,38 @@ brew cask install betterzipql
 brew cask install webpquicklook
 brew cask install suspicious-package
 
-brew cask install google-chrome
+brew cask install airdroid
+brew cask install android-studio
 brew cask install appcleaner
+brew cask install cakebrew
 brew cask install caffeine
+brew cask install clipmenu
+brew cask install dbeaver-enterprise
+brew cask install eclipse-jee
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install mamp
+brew cask install onyx
+brew cask install postman
+brew cask install skim
+brew cask install sourcetree
+brew cask install skype
+brew cask install spotify
+brew cask install spotify-notifications
+brew cask install staruml
+brew cask install steam
 brew cask install sublime-text3
+brew cask install telegram
+brew cask install the-unarchiver
+brew cask install virtualbox
 brew cask install transmission
+brew cask install cockatrice
+brew cask install istat-menus
 
 brew cleanup
 brew cask cleanup
 brew versions cleanup
 brew webfonttools cleanup
-
-
 
 #brew install homebrew/php/php56 --with-gmp
 
