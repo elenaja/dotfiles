@@ -42,6 +42,9 @@ fi
 cd ${DOTFILES_DIRECTORY}
 
 source ./lib/utils
+source ./lib/brew
+source ./lib/npm
+source ./lib/osx
 
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
@@ -89,9 +92,9 @@ git submodule update --recursive --init --quiet
 
 printf "Updating packages...\n"
 # Install Homebrew formulae
-bash ./bin/brew.sh
+run_brew
 # Install Node packages
-bash ./bin/npm.sh
+run_npm
 
 # Ask before potentially overwriting files
 seek_confirmation "Warning: This step may overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
@@ -109,7 +112,7 @@ fi
 seek_confirmation "Warning: This step may modify your OS X system defaults."
 
 if is_confirmed; then
-    bash ./bin/osx
+    run_osx
     e_success "OS X settings updated! You may need to restart."
 else
     printf "Skipped OS X settings update.\n"
