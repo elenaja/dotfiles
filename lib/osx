@@ -190,7 +190,7 @@ run_osx() {
 	# Kill affected applications                                                  #
 	###############################################################################
 
-	for app in "cfprefsd" "Dock" "Finder" "Photos" "Safari" "SystemUIServer" "Terminal"  do
+	for app in "cfprefsd" "Dock" "Finder" "Photos" "Safari" "SystemUIServer" "Terminal";  do
 		killall "${app}" &> /dev/null
 	done
 	echo "Done. Note that some of these changes require a logout/restart to take effect."
