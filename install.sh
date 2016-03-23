@@ -50,6 +50,7 @@ source ./lib/fonts
 if ! type_exists 'gcc'; then
     e_header "You need xcode command line tool. Installing..."
     xcode-select --install
+    read -p "Press ENTER when installation is completed to continue " -n 1
 fi
 
 # Check for Homebrew
