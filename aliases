@@ -1,0 +1,23 @@
+alias ls='ls -G'
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -la'
+alias rm='trash'
+
+alias server='python -m SimpleHTTPServer'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; brew cask cleanup; brew versions cleanup; brew webfonttools cleanup; npm install npm -g; npm update -g;'
+
+# OS X has no `md5sum`, so use `md5` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+
+# OS X has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum > /dev/null || alias sha1sum="shasum"

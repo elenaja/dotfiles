@@ -1,0 +1,61 @@
+[alias]
+  #Show graph with color and pretty format
+	graph = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+
+[apply]
+  # Detect whitespace errors when applying a patch
+	whitespace = fix
+
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
+
+[core]
+  # Use custom `.gitignore`
+	excludesfile = ~/.gitignore
+  # Make `git rebase` safer on OS X
+	trustctime = false
+  # Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	precomposeunicode = true
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = true
+
+[color "branch"]
+  current = green bold
+  local = green
+  remote = cyan
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[diff]
+  # Detect copies as well as renames
+	renames = copies
+
+[diff "bin"]
+  # Use `hexdump` to diff binary files
+	textconv = hexdump -v -C
+
+[help]
+  # Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[merge]
+  # Include summaries of merged commits in newly created merge commit messages
+	log = true
+
+[user]
+	name = Lorenzo Bugiani
+	email = lorenzo.bugiani@gmail.com

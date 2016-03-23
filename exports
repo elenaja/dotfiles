@@ -1,0 +1,15 @@
+# Increase Bash history size. The default is 500.
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+
+# Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+# Link Homebrew casks in `/Applications` rather than `~/Applications`
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#export PATH=$JAVA_HOME/bin:$PATH
