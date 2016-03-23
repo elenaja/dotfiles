@@ -1,4 +1,2 @@
 # dotfiles
-<!---
-bash -c "$(curl -fsSL raw.github.com/necolas/dotfiles/master/bin/dotfiles)"
--->
+bash -c "$(curl -fsSL raw.githubusercontent.com/canemacchina/dotfiles/master/install.sh)"
