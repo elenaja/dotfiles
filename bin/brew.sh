@@ -7,9 +7,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # Make sure we’re using the latest Homebrew.
+e_header "Updating brew...\n"
 brew update
 
 # Upgrade any already-installed formulae.
+e_header "Upgrading any already-installed formulae...\n"
 brew upgrade --all
 
 # use latest rsync rather than out-dated OS X rsync
