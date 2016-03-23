@@ -17,14 +17,12 @@ backupFiles() {
     for file in ${DOTFILES}; do
         mv "${HOME}/.${file}" ${bckfld}
     done
-    e_success "Dotfiles backup complete!"
 }
 
 mirrorfiles() {
     for file in ${DOTFILES}; do
         link "${DOTFILES_DIRECTORY}/${file}" "${HOME}/.${file}"
     done
-    e_success "Dotfiles update complete!"
 }
 
 # If missing, download and extract the dotfiles repository
@@ -49,6 +47,7 @@ source ./lib/sublime
 
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
+    e_header "You need xcode command line tool. Installing..."
     xcode-select --install
 fi
 
@@ -67,7 +66,6 @@ fi
 
 # Check for git
 if ! type_exists 'git'; then
-    e_header "Updating Homebrew..."
     e_header "Installing Git..."
     brew install git
 fi
@@ -91,25 +89,25 @@ git pull --rebase origin master
 # Update submodules
 git submodule update --recursive --init --quiet
 
-printf "Updating packages...\n"
 # Install Homebrew formulae
-#run_brew
+e_header "Installing brew and brew cask packages..."
+run_brew
+e_success "done installing brew and brew cask packages..."
 # Install Node packages
-#run_npm
+e_header "Installing Node.js packages..."
+run_npm
+e_success "Done installing Node.js packages..."
 # Copy sublime text packages and configs
+e_header "Updating Sublime Text preferences and packages..."
 run_sublime
+e_success "Done updating Sublime Text preferences and packages..."
 
-# Ask before potentially overwriting files
-seek_confirmation "Warning: This step may overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
-
-if is_confirmed; then
-    backupFiles
-    mirrorfiles
-    source ${HOME}/.bash_profile
-else
-    printf "Aborting...\n"
-    exit 1
-fi
+e_header "Overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
+backupFiles
+e_success "Dotfiles backup complete!"
+mirrorfiles
+e_success "Dotfiles update complete!"
+source ${HOME}/.bash_profile
 
 # Ask before potentially overwriting OS X defaults
 seek_confirmation "Warning: This step may modify your OS X system defaults."
@@ -121,11 +119,6 @@ else
     printf "Skipped OS X settings update.\n"
 fi
 
-seek_confirmation "Install Material Theme for Terminal"
-
-if is_confirmed; then
-    open ./extra/material-theme.terminal
-    e_success "Succesfully installed Terminal material theme"
-else
-    printf "Skipped theme installation"
-fi
+e_header "Installing Terminal material theme"
+open ./extra/material-theme.terminal
+e_success "Succesfully installed Terminal material theme"

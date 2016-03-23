@@ -14,6 +14,7 @@ run_brew() {
 	e_header "Upgrading any already-installed formulae..."
 	brew upgrade --all
 
+	e_header "Installing default formulae..."
 	# use latest rsync rather than out-dated OS X rsync
 	brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
 
