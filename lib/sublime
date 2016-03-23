@@ -1,0 +1,11 @@
+run_sublime() {
+	e_header "Updating Sublime Text preferences and packages..."
+	cp "./sublime/packages/Package Control.sublime-package" "${HOME}/Library/Application Support/Sublime Text 3/Installed Packages"
+
+	DIR="${HOME}/Library/Application Support/Sublime Text 3/Packages/User"
+	PKG="./sublime/settings"
+	for file in "${PKG}/*"; do
+      cp file ${DIR}
+    done
+    e_header "Done updating Sublime Text preferences and packages..."
+}

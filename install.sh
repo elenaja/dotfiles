@@ -8,12 +8,12 @@ DOTFILES="aliases bash_profile bash_prompt bashrc exports functions gitconfig gi
 
 link() {
     # Force create/replace the symlink.
-    ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+    ln -fs ${1} ${2}
 }
 
 backupFiles() {
-    bckfld = "${DOTFILES_BACKUP_FOLDER}/$(date +%s)"
-    mkdir ${bckfld}
+    bckfld="${DOTFILES_BACKUP_FOLDER}/$(date +%s)"
+    mkdir -p ${bckfld}
     for file in ${DOTFILES}; do
         mv "${HOME}/.${file}" ${bckfld}
     done
@@ -22,7 +22,7 @@ backupFiles() {
 
 mirrorfiles() {
     for file in ${DOTFILES}; do
-        link ${file} "${HOME}/.${file}"
+        link "${DOTFILES_DIRECTORY}/${file}" "${HOME}/.${file}"
     done
     e_success "Dotfiles update complete!"
 }
@@ -45,6 +45,7 @@ source ./lib/utils
 source ./lib/brew
 source ./lib/npm
 source ./lib/osx
+source ./lib/sublime
 
 # Before relying on Homebrew, check that packages can be compiled
 if ! type_exists 'gcc'; then
@@ -92,9 +93,11 @@ git submodule update --recursive --init --quiet
 
 printf "Updating packages...\n"
 # Install Homebrew formulae
-run_brew
+#run_brew
 # Install Node packages
-run_npm
+#run_npm
+# Copy sublime text packages and configs
+run_sublime
 
 # Ask before potentially overwriting files
 seek_confirmation "Warning: This step may overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
@@ -116,4 +119,13 @@ if is_confirmed; then
     e_success "OS X settings updated! You may need to restart."
 else
     printf "Skipped OS X settings update.\n"
+fi
+
+seek_confirmation "Install Material Theme for Terminal"
+
+if is_confirmed; then
+    open ./extra/material-theme.terminal
+    e_success "Succesfully installed Terminal material theme"
+else
+    printf "Skipped theme installation"
 fi
