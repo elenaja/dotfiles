@@ -57,8 +57,8 @@
 	log = true
 
 [user]
-	name = 
-	email = 
+	name = Lorenzo Bugiani
+	email = lorenzo.bugiani@gmail.com
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
