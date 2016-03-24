@@ -95,8 +95,6 @@ run_brew() {
 
 	brew cleanup
 	brew cask cleanup
-	brew versions cleanup
-	brew webfonttools cleanup
 
 	#brew install homebrew/php/php56 --with-gmp
 
