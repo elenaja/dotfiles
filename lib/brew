@@ -45,9 +45,9 @@ run_brew() {
 	brew install woff2
 	brew install trash
 
-	brew install maven
 	brew cask install java7
 	brew cask install java
+	brew install maven
 	#brew install jenv
 	brew install bash-completion
 	brew install node
