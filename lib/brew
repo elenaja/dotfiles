@@ -90,7 +90,6 @@ run_brew() {
 	brew cask install sourcetree
 	brew cask install skype
 	brew cask install spotify
-	brew cask install spotify-notifications
 	brew cask install staruml
 	brew cask install steam
 	brew cask install sublime-text3
