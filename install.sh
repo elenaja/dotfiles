@@ -28,7 +28,7 @@ mirrorfiles() {
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
     printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
-    mkdir ${DOTFILES_DIRECTORY}
+    mkdir -p ${DOTFILES_DIRECTORY}
     # Get the tarball
     curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
     # Extract to the dotfiles directory
