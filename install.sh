@@ -87,6 +87,7 @@ git pull --rebase origin master
 # Update submodules
 git submodule update --recursive --init --quiet
 
+printf "\n"
 seek_confirmation "Installing brew and brew cask packages."
 if is_confirmed; then
     # Install Homebrew formulae
@@ -96,6 +97,7 @@ else
     e_warning "Skipped installing brew and brew cask packages."
 fi
 
+printf "\n"
 seek_confirmation "Installing Node.js packages."
 if is_confirmed; then
     # Install Node packages
@@ -105,6 +107,7 @@ else
     e_warning "Skipped installing Node.js packages.."
 fi
 
+printf "\n"
 seek_confirmation "Installing Roboto font."
 if is_confirmed; then
     # Install fonts
@@ -114,6 +117,7 @@ else
     e_warning "Skipped installing Roboto font.."
 fi
 
+printf "\n"
 seek_confirmation "Updating Sublime Text preferences and packages."
 if is_confirmed; then
     # Copy sublime text packages and configs
@@ -123,6 +127,7 @@ else
     e_warning "Skipped updating Sublime Text preferences and packages."
 fi
 
+printf "\n"
 e_warning "Overwrite your existing dotfiles."
 seek_confirmation "(Don't panic, a backup folder will be created)"
 if is_confirmed; then
@@ -136,6 +141,8 @@ fi
 
 source ${HOME}/.bash_profile
 
+printf "\n"
+e_warning "Update OS X Settings."
 seek_confirmation "Warning: This step may modify your OS X system defaults."
 if is_confirmed; then
     run_osx
@@ -144,12 +151,36 @@ else
     e_warning "Skipped OS X settings update."
 fi
 
+printf "\n"
+seek_confirmation "Wipe all dock icons"
+if is_confirmed; then
+    defaults write com.apple.dock persistent-apps -array
+    e_success "Done Wiping all dock icons"
+else
+    e_warning "Skipped wipe all dock icons."
+fi
+
+printf "\n"
 seek_confirmation "Installing Terminal material theme."
 if is_confirmed; then
     open ./extra/material-theme.terminal
     e_success "Succesfully installed Terminal material theme"
+    e_header "setting terminal preferences"
+
+    pathToTerminalPrefs="${HOME}/Library/Preferences/com.apple.Terminal.plist"
+    # Close if the shell exited cleanly
+    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:shellExitAction integer 1" ${pathToTerminalPrefs}
+
+    # Make the window a bit larger
+    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:columnCount integer 120" ${pathToTerminalPrefs}
+    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:rowCount integer 30" ${pathToTerminalPrefs}
+
+    # Set the "material-theme" as the default
+    defaults write com.apple.Terminal "Startup Window Settings" -string "material-theme"
+    defaults write com.apple.Terminal "Default Window Settings" -string "material-theme"
 else
     e_warning "Skipped installing Terminal material theme."
 fi
 
+printf "\n"
 e_success "Done setting up your system. Enjoy!"

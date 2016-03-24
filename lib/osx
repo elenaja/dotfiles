@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 run_osx() {
 	# Ask for the administrator password upfront
 	sudo -v
@@ -43,6 +44,10 @@ run_osx() {
 	# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 	/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
+	# Disable smart quotes and dashes
+	defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
 	# Sublime Text 3 as default text editor
 	defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add \
 		'{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.sublimetext.3;LSHandlerPreferredVersions={LSHandlerRoleAll=-;};}'
@@ -56,11 +61,51 @@ run_osx() {
 	defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 	defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-	# Trackpad: map bottom right corner to right-click
+	# Trackpad: bottom right corner and two finger right-click
 	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 	defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
 	defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+	# Disable three finger tap (look up)
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -boolean false
+
+	# Zoom in or out
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadPinch -bool true
+
+	# Smart zoom, double-tap with two fingers
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerDoubleTapGesture -bool true
+
+	# Rotate
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRotate -bool true
+
+	# Notification Center
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+
+	# Swipe between pages with two fingers
+	defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool false
+
+	# Swipe between full-screen apps with four finger
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+
+	# Natural scroll direction
+	defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+
+	#Three finger drag
+	defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
+	# Enable other multi-finger gestures
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerVertSwipeGesture -int 2
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerPinchGesture -int 2
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFourFingerHorizSwipeGesture -int 2
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadFiveFingerPinchGesture -int 2
+
+	defaults write com.apple.dock showMissionControlGestureEnabled -bool true
+	defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+	defaults write com.apple.dock showDesktopGestureEnabled -bool true
+	defaults write com.apple.dock showLaunchpadGestureEnabled -bool true
 
 	# Increase sound quality for Bluetooth headphones/headsets
 	defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -80,6 +125,12 @@ run_osx() {
 
 	# Disable auto-correct
 	defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+	# Set keyboard repeat rate
+	defaults write NSGlobalDomain KeyRepeat -int 2
+
+	#Set a shorter Delay until key repeat"
+	defaults write NSGlobalDomain InitialKeyRepeat -int 30
 
 	###############################################################################
 	# Screen                                                                      #
@@ -222,4 +273,11 @@ run_osx() {
 
 	# Prevent Photos from opening automatically when devices are plugged in
 	defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+	###############################################################################
+	# Various			                                                          #
+	###############################################################################
+
+	# Disable automatically adjust brightness
+	sudo defaults write /Library/Preferences/com.apple.iokit.AmbientLightSensor "Automatic Display Enabled" -bool false
 }
