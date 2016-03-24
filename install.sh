@@ -2,7 +2,7 @@
 
 DOTFILES_DIRECTORY="${HOME}/git/dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/canemacchina/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="git@github.com:canemacchina/dotfiles.git"
+DOTFILES_GIT_REMOTE="https://github.com/canemacchina/dotfiles.git"
 DOTFILES_BACKUP_FOLDER="${HOME}/dotfiles_backup/"
 DOTFILES="aliases bash_profile bash_prompt bashrc exports functions gitconfig gitignore inputrc"
 
