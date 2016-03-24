@@ -123,7 +123,8 @@ else
     e_warning "Skipped updating Sublime Text preferences and packages."
 fi
 
-seek_confirmation "Overwrite your existing dotfiles.\n(Don't panic, a backup folder will be created)"
+e_warning "Overwrite your existing dotfiles."
+seek_confirmation "(Don't panic, a backup folder will be created)"
 if is_confirmed; then
     backupFiles
     e_success "Dotfiles backup complete!"
