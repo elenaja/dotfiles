@@ -33,8 +33,9 @@ run_brew() {
 	brew install gnu-sed --with-default-names 
 	# Install Bash 4.
 	# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-	# running `chsh -s /usr/local/bin/bash`.
+	# running `c `.
 	brew install bash
+	brew install bash-completion
 	brew install bash-completion2
 	# Install `wget` with IRI support.
 	brew install wget --with-iri    
@@ -51,9 +52,9 @@ run_brew() {
 	brew cask install java
 	brew install maven
 	#brew install jenv
-	brew install bash-completion
 	brew install node
 	brew install git-flow
+	brew install git-completion
 
 	brew cask install qlcolorcode
 	brew cask install qlstephen
