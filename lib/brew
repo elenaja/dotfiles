@@ -54,7 +54,6 @@ run_brew() {
 	#brew install jenv
 	brew install node
 	brew install git-flow
-	brew install git-completion
 
 	brew cask install qlcolorcode
 	brew cask install qlstephen

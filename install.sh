@@ -65,11 +65,8 @@ if ! type_exists 'brew'; then
     brew tap bramstein/webfonttools
 fi
 
-# Check for git
-if ! type_exists 'git'; then
-    e_header "Installing Git..."
-    brew install git
-fi
+e_header "Installing Git..."
+brew install git
 
 # Initialize the git repository if it's missing
 if ! is_git_repo; then
@@ -146,7 +143,7 @@ else
     e_warning "Skipped OS X settings update."
 fi
 
-eek_confirmation "Installing Terminal material theme."
+seek_confirmation "Installing Terminal material theme."
 if is_confirmed; then
     open ./extra/material-theme.terminal
     e_success "Succesfully installed Terminal material theme"
