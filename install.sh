@@ -151,3 +151,5 @@ if is_confirmed; then
 else
     e_warning "Skipped installing Terminal material theme."
 fi
+
+e_success "Done setting up your system. Enjoy!"

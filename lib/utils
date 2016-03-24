@@ -22,7 +22,6 @@ e_warning() {
 
 # Ask for confirmation before proceeding
 seek_confirmation() {
-    printf "\n"
     e_warning "$@"
     read -p "Continue? (y/n) " -n 1
     printf "\n"
