@@ -43,6 +43,10 @@ run_osx() {
 	# Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 	/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
+	# Sublime Text 3 as default text editor
+	defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add \
+		'{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.sublimetext.3;LSHandlerPreferredVersions={LSHandlerRoleAll=-;};}'
+
 	###############################################################################
 	# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 	###############################################################################

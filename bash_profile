@@ -26,19 +26,13 @@ for option in autocd globstar; do
 done;
 
 # Add tab completion for many Bash commands
-if which brew > /dev/null; then
-	if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    		source "$(brew --prefix)/etc/bash_completion"
-	elif [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-		source "$(brew --prefix)/share/bash-completion/bash_completion";
-    	fi
-elif [ -f /etc/bash_completion ]; then
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    source "$(brew --prefix)/etc/bash_completion"
+fi
+
+if [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi;
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-fi
 
 # Initialize jenv for java version
 #if which jenv > /dev/null; then eval "$(jenv init -)"; fi
