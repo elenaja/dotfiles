@@ -100,6 +100,10 @@ run_brew() {
 	brew cask install transmission
 	brew cask install cockatrice
 	brew cask install istat-menus
+	brew cask install intellij-idea
+	brew cask install phpstorm
+	brew cask install pycharm
+	brew cask install webstorm
 
 	brew cleanup
 	brew cask cleanup
