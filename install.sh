@@ -47,9 +47,8 @@ source ./lib/sublime
 source ./lib/fonts
 
 # Before relying on Homebrew, check that packages can be compiled
-if ! type_exists 'gcc'; then
+if xcode-select --install ; then
     e_header "You need xcode command line tool. Installing..."
-    xcode-select --install
     read -p "Press ENTER when installation is completed to continue " -n 1
 fi
 
