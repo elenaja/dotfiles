@@ -102,6 +102,8 @@ run_brew() {
 	brew cask install phpstorm
 	brew cask install pycharm
 	brew cask install webstorm
+	#brew cask install mactex
+	#brew cask install texstudio
 
 	brew cleanup
 	brew cask cleanup
