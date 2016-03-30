@@ -72,7 +72,8 @@ run_brew() {
 	brew cask install betterzipql
 	brew cask install webpquicklook
 	brew cask install suspicious-package
-
+	
+	brew cask install arrsync
 	brew cask install airdroid
 	brew cask install android-studio
 	brew cask install appcleaner
@@ -102,8 +103,9 @@ run_brew() {
 	brew cask install phpstorm
 	brew cask install pycharm
 	brew cask install webstorm
-	#brew cask install mactex
-	#brew cask install texstudio
+	brew cask install mactex
+	brew cask install texstudio
+	brew cask install evernote
 
 	brew cleanup
 	brew cask cleanup

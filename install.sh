@@ -58,9 +58,9 @@ if ! type_exists 'brew'; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew doctor
     brew tap homebrew/versions
-    e_header "Installing Homebrew cask..."
-    brew tap caskroom/cask
-    brew tap caskroom/versions
+    # e_header "Installing Homebrew cask..."
+    # brew tap caskroom/cask
+    # brew tap caskroom/versions
     e_header "Installing webfonttools formulae..."
     brew tap bramstein/webfonttools
 fi
