@@ -14,7 +14,7 @@ alias egrep='egrep --color=auto'
 alias sudo='sudo '
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='printf "check apple update\n"; sudo softwareupdate -i -a; printf "update brew\n"; brew update; brew upgrade --all; brew_cask_upgrade; brew cleanup; brew cask cleanup; printf "update npm\n"; npm install npm -g; npm update -g;'
+alias update='printf "check apple update\n"; sudo softwareupdate -i -a; printf "update brew\n"; brew update; brew upgrade --all; brew_cask_upgrade; brew cleanup; brew cask cleanup; brew doctor; printf "update npm\n"; npm install npm -g; npm update -g;'
 
 # OS X has no `md5sum`, so use `md5` as a fallback
 command -v md5sum > /dev/null || alias md5sum="md5"
