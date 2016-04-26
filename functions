@@ -18,7 +18,6 @@ brew_cask_upgrade() {
 	    current="$(brew cask info $cask | sed -n '1p' | sed -n 's/^.*: \(.*\)$/\1/p')"
 	    installed=( $(ls /opt/homebrew-cask/Caskroom/$cask))
 	    if (! [[ " ${installed[@]} " == *" $current "* ]]); then
-	    	(set -x; brew cask uninstall $cask;)
 	        (set -x; brew cask install $cask --force;)
 	    fi
 	done
