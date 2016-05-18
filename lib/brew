@@ -106,6 +106,7 @@ run_brew() {
 	brew cask install mactex
 	brew cask install texstudio
 	brew cask install evernote
+	brew cask install whatsapp
 
 	brew cleanup
 	brew cask cleanup
