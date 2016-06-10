@@ -19,7 +19,7 @@ run_brew() {
 	e_header "Installing default formulae..."
 
 	# Install GNU core utilities (those that come with OS X are outdated).
-	brew install coreutils
+	brew install coreutils --with-default-names 
 	sudo ln -fs /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 	# Install some other useful utilities like `sponge`.
@@ -83,6 +83,7 @@ run_brew() {
 	brew cask install eclipse-jee
 	brew cask install google-chrome
 	brew cask install google-chrome-canary
+	brew cask install firefox
 	brew cask install mamp
 	brew cask install onyx
 	brew cask install postman
