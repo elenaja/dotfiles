@@ -16,7 +16,7 @@ brew_cask_upgrade() {
 	for cask in ${casks[@]}
 	do
 	    current="$(brew cask info $cask | sed -n '1p' | sed -n 's/^.*: \(.*\)$/\1/p')"
-	    installed=( $(ls /opt/homebrew-cask/Caskroom/$cask))
+	    installed=( $(ls /usr/local/Caskroom/$cask))
 	    if (! [[ " ${installed[@]} " == *" $current "* ]]); then
 	        (set -x; brew cask install $cask --force;)
 	    fi
