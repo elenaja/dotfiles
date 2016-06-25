@@ -108,6 +108,7 @@ run_brew() {
 	brew cask install texstudio
 	brew cask install evernote
 	brew cask install whatsapp
+	brew cask install kobox
 
 	brew cleanup
 	brew cask cleanup
