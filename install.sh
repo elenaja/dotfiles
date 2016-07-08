@@ -59,9 +59,6 @@ if ! type_exists 'brew'; then
     brew doctor
     brew tap homebrew/versions
     brew tap homebrew/dupes
-    # e_header "Installing Homebrew cask..."
-    # brew tap caskroom/cask
-    # brew tap caskroom/versions
     e_header "Installing webfonttools formulae..."
     brew tap bramstein/webfonttools
 fi
