@@ -1,3 +1,5 @@
+#!/bin/bash
+
 run_fonts() {
 	FONTS_DIR="${HOME}/Library/Fonts"
 	ROBOTO="./extra/fonts"

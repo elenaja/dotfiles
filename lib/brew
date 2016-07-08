@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 run_brew() {
 	# Ask for the administrator password upfront.
 	sudo -v
@@ -6,8 +7,6 @@ run_brew() {
 	# Keep-alive: update existing `sudo` time stamp until the script has finished.
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 	
-	export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 	# Make sure we’re using the latest Homebrew.
 	e_header "Updating brew..."
 	brew update
@@ -19,7 +18,7 @@ run_brew() {
 	e_header "Installing default formulae..."
 
 	# Install GNU core utilities (those that come with OS X are outdated).
-	brew install coreutils --with-default-names 
+	brew install coreutils
 	sudo ln -fs /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
 	# Install some other useful utilities like `sponge`.
@@ -27,7 +26,7 @@ run_brew() {
 	# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 	brew install findutils
 	# Install GNU `sed`, overwriting the built-in `sed`.
-	brew install gnu-sed --with-default-names 
+	brew install gnu-sed
 	# Install Bash 4.
 	brew install bash
 	sudo bash -c 'printf "# List of acceptable shells for chpass(1).\n\
@@ -45,7 +44,6 @@ run_brew() {
 	brew install rsync
 	brew install nano
 	brew install less
-	# Install `wget` with IRI support.
 	brew install wget --with-iri    
 	brew install vim --override-system-vi
 	brew install homebrew/dupes/screen

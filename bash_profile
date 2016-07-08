@@ -1,7 +1,7 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/.{bash_prompt,exports,aliases,functions}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -33,6 +33,3 @@ fi
 if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion;
 fi;
-
-# Initialize jenv for java version
-#if which jenv > /dev/null; then eval "$(jenv init -)"; fi

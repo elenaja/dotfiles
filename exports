@@ -8,8 +8,7 @@ export HISTCONTROL='ignoreboth';
 # Don’t clear the screen after quitting a manual page.
 export MANPAGER='less -X';
 
-# Link Homebrew casks in `/Applications` rather than `~/Applications`
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:/usr/local/sbin:$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$JAVA_HOME/bin:/usr/local/sbin:$PATH
+
+export MANPATH="(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
