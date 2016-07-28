@@ -106,6 +106,7 @@ run_brew() {
 	brew cask install whatsapp
 	brew cask install kobox
 	brew cask install daisydisk
+	brew cask install slack
 
 	brew cleanup
 	brew cask cleanup
