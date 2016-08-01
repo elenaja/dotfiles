@@ -12,7 +12,7 @@
 
 [core]
   # Use custom `.gitignore`
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/master/.gitignore
   # Make `git rebase` safer on OS X
 	trustctime = false
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
