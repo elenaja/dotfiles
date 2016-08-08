@@ -8,7 +8,7 @@ run_sublime() {
 
 	mkdir -p "${INSTALLED_PACKAGES_DIR}"
 	mkdir -p "${USER_DIR}"
-	
+
 	for setting in "${SETTINGS}"/*; do
 		cp "${setting}" "${USER_DIR}"
 	done

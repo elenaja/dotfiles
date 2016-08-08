@@ -10,13 +10,13 @@ run_osx() {
 	###############################################################################
 	# General UI/UX                                                               #
 	###############################################################################
-	
+
 	# Set computer name (as done via System Preferences → Sharing)
 	sudo scutil --set ComputerName "MasterBook"
 	sudo scutil --set HostName "masterbook"
 	sudo scutil --set LocalHostName "masterbook"
 	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "masterbook"
-	
+
 	# Menu bar: hide the Time Machine and Volume icons
 	for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
 		defaults write "${domain}" dontAutoLoad -array \
@@ -29,15 +29,15 @@ run_osx() {
 		"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
 		"/System/Library/CoreServices/Menu Extras/Clock.menu" \
 		"/System/Library/CoreServices/Menu Extras/User.menu"
-		
+
 	# Expand save panel by default
 	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
-	
+
 	# Expand print panel by default
 	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 	defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-	
+
 	# Save to disk (not to iCloud) by default
 	defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
@@ -184,7 +184,7 @@ run_osx() {
 	###############################################################################
 	# Dock, Dashboard, and hot corners                                            #
 	###############################################################################
-	
+
 	# Dock positioned on left side of the screen
 	defaults write com.apple.Dock orientation -string left
 
