@@ -1,6 +1,8 @@
 [alias]
   #Show graph with color and pretty format
 	graph = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
+  #Show graph usefull for rebase workflow
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [apply]
   # Detect whitespace errors when applying a patch
@@ -67,3 +69,7 @@
 	trustExitCode = true
 [commit]
 	template = ~/.stCommitMsg
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

@@ -2,5 +2,5 @@
 
 run_npm() {
 	# Install packages globally and quietly
-	npm install gulp-cli npm-check bower --global --quiet
+	npm install npms-cli gulp-cli npm-check bower --global --quiet
 }
