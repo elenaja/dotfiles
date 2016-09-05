@@ -5,22 +5,26 @@
 	],
 	"installed_packages":
 	[
-		"AngularJS",
-		"AutoFileName",
+		"Babel",
 		"BracketHighlighter",
 		"DocBlockr",
 		"EditorConfig",
 		"Emmet",
+		"ESLint-Formatter",
+		"FileDiffs",
 		"GitGutter",
-		"Markdown Preview",
+		"jQuery",
 		"MarkdownEditing",
 		"Material Theme",
 		"Material Theme - Appbar",
-		"Nodejs",
+		"Origami",
 		"Package Control",
 		"SCSS",
 		"SideBarEnhancements",
-		"SublimeCodeIntel",
-		"TypeScript"
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"Sync View Scroll",
+		"SyncedSideBar",
+		"TrailingSpaces"
 	]
 }
