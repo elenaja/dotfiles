@@ -58,7 +58,7 @@ run_brew() {
 	brew cask install java
 	brew install maven
 	brew install node
-	brew install git-flow
+	brew install git-flow-avh
 
 	brew cask install qlcolorcode
 	brew cask install qlstephen
