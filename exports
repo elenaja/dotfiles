@@ -9,6 +9,19 @@ export HISTCONTROL='ignoreboth';
 export MANPAGER='less -X';
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$JAVA_HOME/bin:/usr/local/sbin:$PATH
 
-export MANPATH="(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+# Use gnu-bins installed with brew instead of OSX defaults
+DIRS=(`brew --prefix`/opt/*/libexec/gnubin)
+for dir in "${DIRS[@]}"
+do
+  PATH=$dir:$PATH
+done
+export PATH=$PATH:$JAVA_HOME/bin:/usr/local/sbin
+
+# Add man pages for gnu-bins
+MANS=(`brew --prefix`/opt/*/libexec/gnuman)
+for man in "${MANS[@]}"
+do
+  MANPATH=$man:$MANPATH
+done
+export MANPATH=$MANPATH
