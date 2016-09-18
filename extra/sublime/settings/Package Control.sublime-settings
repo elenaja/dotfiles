@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"Anaconda",
 		"Babel",
 		"BracketHighlighter",
 		"DocBlockr",
@@ -23,6 +24,8 @@
 		"SideBarEnhancements",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-pep8",
+		"SublimeLinter-pyflakes",
 		"Sync View Scroll",
 		"SyncedSideBar",
 		"TrailingSpaces"

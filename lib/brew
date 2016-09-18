@@ -19,8 +19,6 @@ run_brew() {
 
 	# Install GNU core utilities (those that come with OS X are outdated).
 	brew install coreutils
-	sudo ln -fs /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
 	# Install some other useful utilities like `sponge`.
 	brew install moreutils
 	# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
@@ -39,19 +37,15 @@ run_brew() {
 		/bin/sh\n\
 		/bin/tcsh\n\
 		/bin/zsh\n" > /etc/shells'
-	chsh -s /usr/local/bin/bash
+	chsh -s $(which bash)
 	brew install bash-completion
 	brew install rsync
 	brew install nano
 	brew install less
 	brew install wget --with-iri
 	brew install vim --override-system-vi
-	brew install homebrew/dupes/screen
 	brew install homebrew/dupes/openssh
 	brew install homebrew/dupes/grep
-	brew install sfnt2woff
-	brew install sfnt2woff-zopfli
-	brew install woff2
 	brew install trash
 
 	brew cask install java7
@@ -104,7 +98,6 @@ run_brew() {
 	brew cask install texstudio
 	brew cask install evernote
 	brew cask install whatsapp
-	brew cask install kobox
 	brew cask install daisydisk
 	brew cask install slack
 

@@ -5,8 +5,11 @@
 	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"fade_fold_buttons": false,
 	"font_face": "Roboto Mono",
+	"font_options":
+	[
+		"no_italic"
+	],
 	"font_size": 13,
-	"font_options": ["no_italic"],
 	"highlight_line": true,
 	"ignored_packages":
 	[
