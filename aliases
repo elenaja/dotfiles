@@ -1,23 +1,14 @@
-alias ls='/bin/ls -G'
-alias la='ls -a'
+alias ls='ls -G'
+alias la='ls -A'
 alias ll='ls -l'
-alias lla='ls -la'
+alias lla='ls -lA'
 alias rm='trash'
 
-alias server='python -m SimpleHTTPServer'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias update_host='python ~/git/hosts/updateHostsFile.py -e gambling porn -f -r'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
 
-# Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='printf "check apple update\n"; sudo softwareupdate -i -a; printf "update brew\n"; brew update; brew upgrade --all; brew_cask_upgrade; brew cleanup; brew cask cleanup; brew doctor; printf "update npm\n"; npm install npm -g; npm update -g;'
+# Get OS X Software Updates, and update installed Homebrew, its installed packages
+alias update='printf "check apple update\n"; sudo softwareupdate -i -a; printf "update brew\n"; brew update -v; brew upgrade; brew_cask_upgrade; brew cleanup; brew cask cleanup; brew doctor; brew prune; printf "update npm\n"; npm install npm -g; npm update -g;'
 
-# OS X has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
-
-# OS X has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum"

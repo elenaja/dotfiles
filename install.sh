@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DOTFILES_DIRECTORY="${HOME}/git/dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/canemacchina/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="https://github.com/canemacchina/dotfiles.git"
+DOTFILES_TARBALL_PATH="https://github.com/elenaja/dotfiles/tarball/master"
+DOTFILES_GIT_REMOTE="https://github.com/elenaja/dotfiles.git"
 DOTFILES_BACKUP_FOLDER="${HOME}/dotfiles_backup/"
 DOTFILES="aliases bash_profile bash_prompt bashrc exports functions gitconfig gitignore inputrc"
 
@@ -43,8 +43,6 @@ source ./lib/utils
 source ./lib/brew
 source ./lib/npm
 source ./lib/osx
-source ./lib/sublime
-source ./lib/fonts
 
 # Before relying on Homebrew, check that packages can be compiled
 if xcode-select --install ; then
@@ -57,10 +55,6 @@ if ! type_exists 'brew'; then
     e_header "Installing Homebrew..."
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew doctor
-    brew tap homebrew/versions
-    brew tap homebrew/dupes
-    e_header "Installing webfonttools formulae..."
-    brew tap bramstein/webfonttools
 fi
 
 e_header "Installing Git..."
@@ -73,7 +67,6 @@ if ! is_git_repo; then
     git remote add origin ${DOTFILES_GIT_REMOTE}
     git fetch origin master
     # Reset the index and working tree to the fetched HEAD
-    # (submodules are cloned in the subsequent sync step)
     git reset --hard FETCH_HEAD
     # Remove any untracked files
     git clean -fd
@@ -103,26 +96,6 @@ if is_confirmed; then
     e_success "Done installing Node.js packages..."
 else
     e_warning "Skipped installing Node.js packages.."
-fi
-
-printf "\n"
-seek_confirmation "Installing Roboto font."
-if is_confirmed; then
-    # Install fonts
-    run_fonts
-    e_success "Done installing Roboto font..."
-else
-    e_warning "Skipped installing Roboto font.."
-fi
-
-printf "\n"
-seek_confirmation "Updating Sublime Text preferences and packages."
-if is_confirmed; then
-    # Copy sublime text packages and configs
-    run_sublime
-    e_success "Done updating Sublime Text preferences and packages..."
-else
-    e_warning "Skipped updating Sublime Text preferences and packages."
 fi
 
 printf "\n"
@@ -156,28 +129,6 @@ if is_confirmed; then
     e_success "Done Wiping all dock icons"
 else
     e_warning "Skipped wipe all dock icons."
-fi
-
-printf "\n"
-seek_confirmation "Installing Terminal material theme."
-if is_confirmed; then
-    open ./extra/material-theme.terminal
-    e_success "Succesfully installed Terminal material theme"
-    e_header "setting terminal preferences"
-
-    pathToTerminalPrefs="${HOME}/Library/Preferences/com.apple.Terminal.plist"
-    # Close if the shell exited cleanly
-    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:shellExitAction integer 1" ${pathToTerminalPrefs}
-
-    # Make the window a bit larger
-    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:columnCount integer 120" ${pathToTerminalPrefs}
-    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:material-theme:rowCount integer 30" ${pathToTerminalPrefs}
-
-    # Set the "material-theme" as the default
-    defaults write com.apple.Terminal "Startup Window Settings" -string "material-theme"
-    defaults write com.apple.Terminal "Default Window Settings" -string "material-theme"
-else
-    e_warning "Skipped installing Terminal material theme."
 fi
 
 printf "\n"

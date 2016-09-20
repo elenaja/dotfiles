@@ -17,15 +17,6 @@ run_brew() {
 
 	e_header "Installing default formulae..."
 
-	# Install GNU core utilities (those that come with OS X are outdated).
-	brew install coreutils
-	# Install some other useful utilities like `sponge`.
-	brew install moreutils
-	# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-	brew install findutils
-	# Install GNU `sed`.
-	brew install gnu-sed
-	# Install Bash 4.
 	brew install bash
 	sudo bash -c 'printf "# List of acceptable shells for chpass(1).\n\
 		# Ftpd will not allow users to connect who are not using\n\
@@ -39,20 +30,10 @@ run_brew() {
 		/bin/zsh\n" > /etc/shells'
 	chsh -s $(which bash)
 	brew install bash-completion
-	brew install rsync
-	brew install nano
-	brew install less
-	brew install wget --with-iri
-	brew install vim --override-system-vi
-	brew install homebrew/dupes/openssh
-	brew install homebrew/dupes/grep
 	brew install trash
 
-	brew cask install java7
 	brew cask install java
-	brew install maven
 	brew install node
-	brew install git-flow-avh
 
 	brew cask install qlcolorcode
 	brew cask install qlstephen
@@ -65,41 +46,30 @@ run_brew() {
 	brew cask install webpquicklook
 	brew cask install suspicious-package
 
-	brew cask install arrsync
 	brew cask install airdroid
-	brew cask install android-studio
 	brew cask install appcleaner
 	brew cask install caffeine
-	brew cask install clipmenu
-	brew cask install dbeaver-enterprise
-	brew cask install eclipse-jee
 	brew cask install google-chrome
-	brew cask install google-chrome-canary
-	brew cask install firefox
 	brew cask install mamp
 	brew cask install onyx
-	brew cask install postman
 	brew cask install skim
 	brew cask install sourcetree
 	brew cask install skype
 	brew cask install spotify
-	brew cask install staruml
-	brew cask install steam
-	brew cask install sublime-text
-	brew cask install telegram
 	brew cask install the-unarchiver
 	brew cask install virtualbox
-	brew cask install transmission
-	brew cask install cockatrice
-	brew cask install istat-menus
-	brew cask install intellij-idea
-	brew cask install webstorm
-	brew cask install mactex
-	brew cask install texstudio
-	brew cask install evernote
-	brew cask install whatsapp
-	brew cask install daisydisk
-	brew cask install slack
+	brew cask install cyberduck
+	brew cask install dropbox
+	brew cask install flux
+	brew cask install google-earth
+	brew cask install phpstorm
+	brew cask install sketch
+	brew cask install skitch
+	brew cask install skyfonts
+	brew cask install vlc
+	brew cask install vuze
+	brew cask install sublime-text
+
 
 	brew cleanup
 	brew cask cleanup

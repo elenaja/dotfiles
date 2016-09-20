@@ -1,30 +1,3 @@
-[alias]
-  # Show graph with color and pretty format
-  graph = log --graph --full-history --all --color --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m"
-  # list aliases
-  alias = !git config -l | grep alias | cut -c 7-
-  ###
-  # Viralize workflow
-  ###
-  # Show graph usefull for rebase workflow
-  tree = log --graph --decorate --pretty=oneline --abbrev-commit
-  # hard reset current branch to remote
-  bup = "!f(){ current_branch=$(git rev-parse --abbrev-ref HEAD); git fetch --prune; git reset --hard origin/$current_branch; }; f"
-  # rebase current branch to $1
-  ron = "!f(){ git fetch; git rebase --keep-empty -i origin/${1-master}; }; f"
-  rc = !git rebase --continue;
-  ra = !git rebase --abort;
-  ca = !git add -A && git commit -m
-  # Undo a rebase after push
-  rabort = !git reflog | grep -v rebase | head -1 | sed -e \"s/^\\([[:alnum:]][[:alnum:]]*\\)\\(.*\\)/\\1/g\" | git reset —hard
-  # simple wf to save temporary work: 1) git save; 2) git undo (to undo the commit but keeps all changes) or git amend
-  save = !git add -A && git commit -m 'SAVEPOINT'
-  undo = reset HEAD~1 --mixed
-  amend = !git add -A && git commit --amend -m
-  bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
-  bdone = "!f() { git checkout ${1-master} && git bup && git bclean ${1-master}; }; f"
-  co = "!f(){ dest_branch=$(git branch --list VR-$1* | head -1); git checkout $dest_branch;}; f"
-
 [apply]
   # Detect whitespace errors when applying a patch
 	whitespace = fix
@@ -35,7 +8,7 @@
 
 [core]
   # Use custom `.gitignore`
-	excludesfile = /Users/master/.gitignore
+	excludesfile = /Users/elena/.gitignore
   # Make `git rebase` safer on OS X
 	trustctime = false
   # Prevent showing files whose names contain non-ASCII symbols as unversioned.
@@ -80,17 +53,17 @@
 	log = true
 
 [user]
-	name = Lorenzo Bugiani
-	email = lorenzo.bugiani@gmail.com
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	name = Elena Juárez Alonso
+	email = elenajuarezalonso@gmail.com
 [commit]
 	template = ~/.stCommitMsg
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

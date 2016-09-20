@@ -12,17 +12,16 @@ run_osx() {
 	###############################################################################
 
 	# Set computer name (as done via System Preferences → Sharing)
-	sudo scutil --set ComputerName "MasterBook"
-	sudo scutil --set HostName "masterbook"
-	sudo scutil --set LocalHostName "masterbook"
-	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "masterbook"
+	sudo scutil --set ComputerName "Piccolino"
+	sudo scutil --set HostName "piccolino"
+	sudo scutil --set LocalHostName "piccolino"
+	sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "piccolino"
 
 	# Menu bar: hide the Time Machine and Volume icons
 	for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
 		defaults write "${domain}" dontAutoLoad -array \
 			"/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-			"/System/Library/CoreServices/Menu Extras/Volume.menu" \
-			"/System/Library/CoreServices/Menu Extras/Battery.menu"
+			"/System/Library/CoreServices/Menu Extras/Volume.menu"
 	done
 	defaults write com.apple.systemuiserver menuExtras -array \
 		"/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
@@ -47,10 +46,6 @@ run_osx() {
 	# Disable smart quotes and dashes
 	defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-	# Sublime Text 3 as default text editor
-	defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add \
-		'{LSHandlerContentType=public.plain-text;LSHandlerRoleAll=com.sublimetext.3;LSHandlerPreferredVersions={LSHandlerRoleAll=-;};}'
 
 	###############################################################################
 	# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -89,7 +84,7 @@ run_osx() {
 	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
 
 	# Natural scroll direction
-	defaults write NSGlobalDomain com.apple.swipescrolldirection -bool true
+	defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
 	#Three finger drag
 	defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
@@ -208,22 +203,6 @@ run_osx() {
 
 	# Make Dock icons of hidden applications translucent
 	defaults write com.apple.dock showhidden -bool true
-
-	# Hot corners
-	# Possible values:
-	#  0: no-op
-	#  2: Mission Control
-	#  3: Show application windows
-	#  4: Desktop
-	#  5: Start screen saver
-	#  6: Disable screen saver
-	#  7: Dashboard
-	# 10: Put display to sleep
-	# 11: Launchpad
-	# 12: Notification Center
-	# Top right screen corner → Start screen saver
-	defaults write com.apple.dock wvous-tr-corner -int 5
-	defaults write com.apple.dock wvous-tr-modifier -int 0
 
 	###############################################################################
 	# Safari & WebKit                                                             #
