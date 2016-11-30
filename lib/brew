@@ -69,6 +69,7 @@ run_brew() {
 	brew cask install vlc
 	brew cask install vuze
 	brew cask install sublime-text
+	brew cask install clip-menu
 
 
 	brew cleanup
