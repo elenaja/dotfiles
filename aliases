@@ -2,7 +2,6 @@ alias ls='ls -G'
 alias la='ls -A'
 alias ll='ls -l'
 alias lla='ls -lA'
-alias rm='trash'
 
 alias update_host='python ~/git/hosts/updateHostsFile.py -e gambling porn -f -r'
 

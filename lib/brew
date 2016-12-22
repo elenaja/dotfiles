@@ -71,7 +71,6 @@ run_brew() {
 	brew cask install sublime-text
 	brew cask install clip-menu
 
-
 	brew cleanup
 	brew cask cleanup
 }
