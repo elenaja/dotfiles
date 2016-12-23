@@ -70,6 +70,7 @@ run_brew() {
 	brew cask install vuze
 	brew cask install sublime-text
 	brew cask install clip-menu
+	brew cask install genymotion
 
 	brew cleanup
 	brew cask cleanup
