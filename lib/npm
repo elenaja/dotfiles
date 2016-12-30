@@ -2,5 +2,5 @@
 
 run_npm() {
 	# Install packages globally and quietly
-	npm install gulp-cli cordova --global --quiet
+	npm install gulp-cli cordova ios-sim --global --quiet
 }

@@ -31,6 +31,8 @@ run_brew() {
 	chsh -s $(which bash)
 	brew install bash-completion
 	brew install trash
+	brew install ideviceinstaller
+	brew install ios-webkit-debug-proxy
 
 	brew cask install java
 	brew install node
@@ -70,7 +72,6 @@ run_brew() {
 	brew cask install vuze
 	brew cask install sublime-text
 	brew cask install clip-menu
-	brew cask install genymotion
 
 	brew cleanup
 	brew cask cleanup

@@ -11,3 +11,5 @@ export MANPAGER='less -X';
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 export PATH=/usr/local/bin:$JAVA_HOME/bin:/usr/local/sbin:$PATH
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
