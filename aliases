@@ -3,7 +3,7 @@ alias la='ls -A'
 alias ll='ls -l'
 alias lla='ls -lA'
 
-alias update_host='python ~/git/hosts/updateHostsFile.py -e gambling porn -f -r'
+alias update_host='python ~/git/hosts/updateHostsFile.py -e gambling porn fakenews -f -r'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
